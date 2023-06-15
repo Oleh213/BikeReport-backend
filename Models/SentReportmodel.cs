@@ -1,15 +1,16 @@
 ﻿using System;
-namespace task_backend.Context
-{
-	public class Report
-	{
-		public Guid ReportId { get; set; }
+using task_backend.Context;
+using task_backend.DTO;
 
-		public Guid BikeTypeId { get; set; }
+namespace task_backend.Models
+{
+	public class SentReportmodel
+	{
+        public Guid BikeTypeId { get; set; }
 
         public Guid BikeBrandId { get; set; }
 
-		public Guid  ServiceComponentId { get; set; }
+        public Guid ServiceComponentId { get; set; }
 
         public string Message { get; set; }
 
@@ -35,15 +36,7 @@ namespace task_backend.Context
 
         public string Zip { get; set; }
 
-        public BikeType BikeType { get; set; }
-
-        public BikeBrand BikeBrand { get; set; }
-
-        public ICollection<ServicePackage> ServicePackeges { get; set; }
-
-        public ServiceComponent ServiceComponent { get; set; }
-
-
+        public List<ServicePackageDTO> ServicePackages { get; set; }
     }
 }
 

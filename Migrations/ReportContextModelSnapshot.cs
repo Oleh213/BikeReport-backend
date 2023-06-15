@@ -68,6 +68,9 @@ namespace task_backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("AddPackages")
+                        .HasColumnType("INTEGER");
+
                     b.Property<Guid>("BikeBrandId")
                         .HasColumnType("TEXT");
 
@@ -78,11 +81,14 @@ namespace task_backend.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("Ebike")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("MaxMoney")
+                    b.Property<int?>("MaxMoney")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Message")

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using task_backend.Interfaces;
+using task_backend.Models;
 
 namespace task_backend.Controllers;
 
@@ -68,6 +69,27 @@ public class ReportController: ControllerBase
             var servicePackages = await _reportActionsBL.GetServicePackages();
 
             return servicePackages != null ? Ok(servicePackages) : NotFound();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpPost("SentReport")]
+    public async Task<IActionResult> SentReport([FromBody] SentReportmodel reportmodel)
+    {
+        try
+        {
+            if (await _reportActionsBL.CheckInformation(reportmodel))
+            {
+                var result = await _reportActionsBL.SentReport(reportmodel);
+
+                return result ? Ok() : NotFound();
+            }
+
+            return NotFound();
+               
         }
         catch (Exception ex)
         {

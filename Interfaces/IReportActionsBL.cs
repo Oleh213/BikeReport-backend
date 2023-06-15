@@ -1,5 +1,6 @@
 ﻿using System;
 using task_backend.Context;
+using task_backend.Models;
 
 namespace task_backend.Interfaces
 {
@@ -14,6 +15,10 @@ namespace task_backend.Interfaces
         Task<List<ServicePackage>> GetServicePackages();
 
         Task<bool> AddData();
+
+        Task<bool> SentReport(SentReportmodel reportmodel);
+
+        Task<bool> CheckInformation(SentReportmodel reportmodel);
     }
 }
 
